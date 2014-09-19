@@ -169,7 +169,7 @@
             this.Controls.Add(this.cmdConnect);
             this.Controls.Add(this.tbConnectUrl);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "ClientAce Remote Test";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

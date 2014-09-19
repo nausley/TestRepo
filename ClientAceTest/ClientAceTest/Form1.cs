@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Kepware.ClientAce;
 using Kepware.ClientAce.OpcDaClient;
+
 
 namespace ClientAceTest
 {
@@ -36,6 +29,7 @@ namespace ClientAceTest
 
         private void cmdConnect_Click(object sender, EventArgs e)
         {
+            bool connectFailed;
             _url = tbConnectUrl.Text;
             _clientHandle = Convert.ToInt32(tbClientHandle.Text);
             var connectInfo = new ConnectInfo
@@ -49,11 +43,13 @@ namespace ClientAceTest
 
             try
             {
-                bool connectFailed;
-                _daServerMgt.Connect(_url,_clientHandle,ref connectInfo,out connectFailed);
+                _daServerMgt.Connect(_url, _clientHandle, ref connectInfo, out connectFailed);
+                tbStatus.Text = !connectFailed ? "Successful" : "Error Connecting!!";
             }
             catch (Exception ex)
             {
+                connectFailed = false;
+                tbStatus.Text = !connectFailed ? "Successful" : "Error Connecting!!";
                 var msg = "Connection Error\n" + ex.Message + "\nInner Exception:\n" + ex.InnerException;
                 MessageBox.Show(msg,"Connection Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 if (_daServerMgt.IsConnected) _daServerMgt.Disconnect();
@@ -64,6 +60,7 @@ namespace ClientAceTest
         private void cmdDisconnect_Click(object sender, EventArgs e)
         {
             if (_daServerMgt.IsConnected) _daServerMgt.Disconnect();
+
         }
 
         private void cmdExit_Click(object sender, EventArgs e)
@@ -75,6 +72,7 @@ namespace ClientAceTest
         {
             //TODO Close Kepware ClientAce connections
             if (_daServerMgt.IsConnected) _daServerMgt.Disconnect();
+            _daServerMgt.Dispose();
         }
     }
 }
