@@ -40,9 +40,6 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Kepware.ClientAce.DA_Junction">
-      <HintPath>..\..\..\..\Program Files (x86)\Kepware Technologies\ClientAce\V4.0\Kepware.ClientAce.DA_Junction.dll</HintPath>
-    </Reference>
     <Reference Include="Kepware.ClientAce.OpcClient">
       <HintPath>..\..\..\..\Program Files (x86)\Kepware Technologies\ClientAce\V4.0\Kepware.ClientAce.OpcClient.dll</HintPath>
     </Reference>
