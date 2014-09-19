@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Kepware.ClientAce.OpcCmn;
 using Kepware.ClientAce.OpcDaClient;
 
 
@@ -16,6 +15,7 @@ namespace ClientAceTest
         {
             _daServerMgt = new DaServerMgt();
             InitializeComponent();
+            tbStatus.Text = "Not Connected";
         }
 
         private void cmdLocal_Click(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace ClientAceTest
             }
             catch (Exception ex)
             {
-                connectFailed = false;
+                connectFailed = true;
                 tbStatus.Text = !connectFailed ? "Successful" : "Error Connecting!!";
                 var msg = "Connection Error\n" + ex.Message + "\nInner Exception:\n" + ex.InnerException;
                 MessageBox.Show(msg,"Connection Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -60,7 +60,12 @@ namespace ClientAceTest
 
         private void cmdDisconnect_Click(object sender, EventArgs e)
         {
-            if (_daServerMgt.IsConnected) _daServerMgt.Disconnect();
+            if (_daServerMgt.IsConnected)
+            {
+                _daServerMgt.Disconnect();
+                tbStatus.Text = "Not Connected";
+            }
+            
 
         }
 
