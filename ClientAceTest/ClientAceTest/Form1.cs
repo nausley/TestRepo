@@ -33,13 +33,15 @@ namespace ClientAceTest
             bool connectFailed;
             _url = tbConnectUrl.Text;
             _clientHandle = Convert.ToInt32(tbClientHandle.Text);
+            var userId = new UserIdentityTokenUserPassword { UserName = "envisionService", Password = "WwdRk6DVtQoD8y6" };
             var connectInfo = new ConnectInfo
             {
                 LocalId = "en",
                 ClientName = tbClientName.Text,
                 KeepAliveTime = 500,
                 RetryAfterConnectionError = true,
-                RetryInitialConnection = false
+                RetryInitialConnection = false,
+                UserIdentity = userId
             };
 
             try
