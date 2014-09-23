@@ -26,6 +26,7 @@ namespace ClientAceTest
         private void cmdRemote_Click(object sender, EventArgs e)
         {
             tbConnectUrl.Text = "opcda://172.24.1.31/Kepware.KEPServerEX.V5";
+//            tbConnectUrl.Text = "opc.tcp://127.0.0.1:49320";
         }
 
         private void cmdConnect_Click(object sender, EventArgs e)
@@ -33,7 +34,7 @@ namespace ClientAceTest
             bool connectFailed;
             _url = tbConnectUrl.Text;
             _clientHandle = Convert.ToInt32(tbClientHandle.Text);
-            var userId = new UserIdentityTokenUserPassword { UserName = "envisionService", Password = "WwdRk6DVtQoD8y6" };
+            var userId = new UserIdentityTokenUserPassword { UserName = "172.24.1.31/envisionService", Password = "WwdRk6DVtQoD8y6" };
             var connectInfo = new ConnectInfo
             {
                 LocalId = "en",
