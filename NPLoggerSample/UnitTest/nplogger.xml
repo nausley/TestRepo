@@ -1,0 +1,11 @@
+<Logger AppName="NPLoggerSample" DefaultSessionDefaultLevel="Normal" DefaultSessionEnabled="True" DefaultSessionLevel="Debug" Level="Debug" Enabled="True">
+  <Targets>
+    <Target Type="LogicNP.CryptoLogger.PipeLogTarget" Async="False" AsyncMaxBufferSize="10240" AsyncFlushOnClose="True" AsyncThrottle="True" BufferFlushLevel="Error" BufferFlushMode="All" MaxBufferSize="10240" KeepOpenAfterBufferFlush="True" Level="Debug" Reconnect="True" ReconnectInterval="5000" UseBuffer="False" TextEncoding="UTF8" TextPattern="%level% %timestamp% %title%" PipeName="cryptologger" Server="." />
+    <Target Type="LogicNP.CryptoLogger.FileLogTarget" Async="False" AsyncMaxBufferSize="10240" AsyncFlushOnClose="True" AsyncThrottle="True" BufferFlushLevel="Error" BufferFlushMode="All" MaxBufferSize="10240" KeepOpenAfterBufferFlush="True" Level="Debug" Reconnect="True" ReconnectInterval="5000" UseBuffer="False" TextEncoding="UTF8" TextPattern="%level% %timestamp% %title%" Append="False" LogFileRotation="None" BaseFileName="C:\Users\nausley\Dropbox\BeetAnalyticsTechnology\src\NPLoggerSample\UnitTest\log.debug" MaxFileSize="0" Password="" OutputFormat="Binary" />
+  </Targets>
+  <Filters />
+  <Sessions>
+    <Session Name="Main" Enabled="True" Level="Normal" DefaultLevel="Normal" />
+    <Session Name="Debug" Enabled="True" Level="Debug" DefaultLevel="Debug" />
+  </Sessions>
+</Logger>
